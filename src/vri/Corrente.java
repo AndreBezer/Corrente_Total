@@ -3,7 +3,14 @@ package vri;
 public class Corrente {
 
     // Atributos
-    private double r1, r2, r3, tt;
+    //Resistencia
+    private double r1, r2, r3;
+    
+    //Tensão
+    double tt;
+
+    //corrente
+    double c1, c2, c3;
 
     // Getters e Setters
     public void setR1(double r1) {
@@ -25,13 +32,35 @@ public class Corrente {
     //Metodos
     public void corrente(){
 
-        // Erro se resistencia = 0
-        double c1 = tt/r1;
-        double c2 = tt/r2;
-        double c3 = tt/r3;
+        if (r1 == 0){
+            this.r1 = 1;
+        }
 
-        System.out.printf("Corrente 1: %.2fA%n", c1);
+        if (r2 == 0){
+            this.r2 = 1;
+        }
+        
+        if (r3 == 0){
+            this.r3 = 1;
+        }
+
+        // Erro se resistencia = 0 -- Corrigido!
+        c1 = tt/r1;
+        c2 = tt/r2;
+        c3 = tt/r3;
+
+        System.out.printf("%nCorrente 1: %.2fA%n", c1);
         System.out.printf("Corrente 2: %.2fA%n", c2);
         System.out.printf("Corrente 3: %.2fA%n", c3);
     };
+
+    public void total(){
+        double req = 0;
+
+        if (tt != 0){
+            req = tt/ (c1 + c2 + c3);        
+        };
+
+        System.out.printf("%nreq: %.2f%n", req);
+    }
 }
