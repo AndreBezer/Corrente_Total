@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 import vri.Corrente;
 
@@ -5,6 +6,7 @@ public class Main{
     void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Corrente corrente = new Corrente();
+        Locale.setDefault(Locale.US);
 
         System.out.print("Digite o valor da resistencia 1: ");
         corrente.setR1(sc.nextDouble());
@@ -19,6 +21,8 @@ public class Main{
         corrente.setTt(sc.nextDouble());
 
         corrente.corrente();
+        corrente.total();
+        
         sc.close();
     }
 }
